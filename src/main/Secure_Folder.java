@@ -2,7 +2,6 @@
 // Version 4.3 6/20/2019
 // - Fixed problem posting to Website in postWebData() function.
 //
-
 package main;
 
 import java.io.*;
@@ -15,7 +14,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Element;
+import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -227,7 +226,6 @@ public class Secure_Folder extends javax.swing.JFrame {
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(10, 10));
 
         privateText.setEditable(false);
@@ -512,7 +510,7 @@ public class Secure_Folder extends javax.swing.JFrame {
                     try {
                         //byte[] clearb = decrypt.crypto(false, chk.getEncryptKey(), crptdata); // decrypt the data
                         String decryptedString = AES.decrypt(leadstr, chk.getEncryptKey());
-                        //System.out.print(decryptedString256);
+                        //System.out.print(decryptedString);
                         byte[] clearb = decryptedString.getBytes();
                         InputStream in = new ByteArrayInputStream(clearb);
                         HTMLDocument doc = new HTMLDocument();
@@ -612,6 +610,7 @@ public class Secure_Folder extends javax.swing.JFrame {
         try {
             Document doc = privateText.getDocument();
             privateText.getEditorKit().write(out, doc, 0, doc.getLength());
+            //System.out.print(out);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "***ERROR*** An error occurred while trying to write the text:\n" + e);
         }
@@ -785,7 +784,7 @@ public class Secure_Folder extends javax.swing.JFrame {
             privateText.setEditable(true);
             CancelEditButton.setEnabled(true);
             editSaveButton.setText("Save");
-            privateText.requestFocus();
+            privateText.requestFocusInWindow();
         }
     }//GEN-LAST:event_editSaveButtonActionPerformed
 
@@ -833,34 +832,34 @@ public class Secure_Folder extends javax.swing.JFrame {
         //System.out.println("Bold action triggered");
         Action boldAction = new HTMLEditorKit.BoldAction();
         boldAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_boldButtonActionPerformed
 
     private void italicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_italicButtonActionPerformed
         //System.out.println("Italic action triggered");
         Action italicAction = new HTMLEditorKit.ItalicAction();
         italicAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_italicButtonActionPerformed
 
     private void pasteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteCommandActionPerformed
         // Paste
         Action pasteAction = new HTMLEditorKit.PasteAction();
         pasteAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_pasteCommandActionPerformed
 
     private void CopyCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyCommandActionPerformed
         // Copy Command
         Action copyAction = new HTMLEditorKit.CopyAction();
         copyAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_CopyCommandActionPerformed
 
     private void popupCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupCopyActionPerformed
         Action copyAction = new HTMLEditorKit.CopyAction();
         copyAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_popupCopyActionPerformed
 
     private void privateTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_privateTextMousePressed
@@ -875,7 +874,7 @@ public class Secure_Folder extends javax.swing.JFrame {
         // Paste
         Action pasteAction = new HTMLEditorKit.PasteAction();
         pasteAction.actionPerformed(evt);
-        privateText.requestFocus();
+        privateText.requestFocusInWindow();
     }//GEN-LAST:event_popupPasteActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
