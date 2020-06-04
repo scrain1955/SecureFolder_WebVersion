@@ -1,4 +1,7 @@
 //
+// Version 4.4 6/3/2020
+// - Moved to latest version of java sdk.
+//
 // Version 4.3 6/20/2019
 // - Fixed problem posting to Website in postWebData() function.
 //
@@ -28,7 +31,7 @@ import javax.swing.text.html.HTMLEditorKit;
 public class Secure_Folder extends javax.swing.JFrame {
 
     // Global variables
-    private final String Revision = "4.3";
+    private final String Revision = "4.4";
     private final String acctFilename = "acctinfo.dat";
     FileIOClass fileio;
     String lastIDread = "";
